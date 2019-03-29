@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Local Todo List</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>Todo Item Title: </ion-label>
+    <ion-input placeholder="Enter Title" [(ngModel)]="todoItem.title"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>User Id: </ion-label>
+    <ion-input type="number" placeholder="Enter UserId" [(ngModel)]="todoItem.userId"></ion-input>
+  </ion-item>
+  <ion-item>
+      <ion-checkbox slot="start" [(ngModel)]="todoItem.completed"></ion-checkbox>
+      <ion-label>Completed</ion-label>
+  </ion-item>
+  <ion-button color="primary" (click)="addTodoItem()">Create Todo Item</ion-button>
+  <ion-button color="danger" (click)="clearTodoItem()">Clear Todo Items</ion-button>
+  <br>
+  <ion-list>
+    <ion-item *ngFor="let item of todoData" (click)="navigateDetails(item.id)">
+      <ion-label>Todo {{item.id}}: {{item.title}}</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

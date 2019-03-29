@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Details of Todo Item</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+      <ion-card-header>
+        <ion-card-title>{{todoItem.title}}</ion-card-title>
+        <ion-card-subtitle>User ID: {{todoItem.userId}}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <h2>Item No.: {{todoItem.id}}</h2>
+        <ion-checkbox [(ngModel)]="todoItem.completed"></ion-checkbox>
+        <ion-label> Completed</ion-label>
+      </ion-card-content>
+    </ion-card>
+</ion-content>
