@@ -2,10 +2,12 @@ import { Injectable, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Storage } from '@ionic/storage';
 
+type toDoItem = {userId:string, id:string, title:string, completed:boolean};
+
 @Injectable()
 export class TodoDataService {
     private remoteTodoArray;
-    private localTodoArray:{userId:string, id:string, title:string, completed:boolean}[] = [];
+    private localTodoArray:toDoItem[] = []; //using Array<{userId:string, id:string, title:string, completed:boolean}> does not work in production
     
     constructor(private httpC:HttpClient, private storage: Storage) { }
 
@@ -29,7 +31,7 @@ export class TodoDataService {
         return this.localTodoArray;
     }
 
-    addLocalTodoArray(item:{userId:string, id:string, title:string, completed:boolean}) {
+    addLocalTodoArray(item:toDoItem) {
         let newItem = Object.assign({}, item);  // create new instance to push into array
         newItem.id = (this.localTodoArray.length + 1).toString();
         this.localTodoArray.push(newItem);
